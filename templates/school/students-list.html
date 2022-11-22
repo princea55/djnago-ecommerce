@@ -1,0 +1,345 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+{%block content%}
+
+
+<div class="pcoded-content">
+    <!-- Page-header start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                        <p class="m-b-0">Lorem Ipsum is simply dummy text of the printing</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a href="index.html"> <i class="fa fa-home"></i> </a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#!">Bootstrap Tables</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#!">Basic Tables</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-header end -->
+    <div class="pcoded-inner-content">
+        <!-- Main-body start -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- Page-body start -->
+                <div class="page-body">
+                    <!-- Hover table card start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Student List Order By Id</h5>
+                            <!--                            <span>use class <code>table-hover</code> inside table element</span>-->
+                            <div class="card-header-right">
+                                <ul class="list-unstyled card-option">
+                                    <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                                    <li><i class="fa fa-minus minimize-card"></i></li>
+                                    <li><i class="fa fa-refresh reload-card"></i></li>
+                                    <li><i class="fa fa-trash close-card"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-block table-border-style">
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="studenttable">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Student Code</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Age</th>
+                                        <th>City</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for student in students%}
+                                    <tr>
+                                        <th scope="row">{{student.id}}</th>
+                                        <td>{{student.student_code}}</td>
+                                        <td>{{student.name}}</td>
+                                        <td>{{student.email}}</td>
+                                        <td>{{student.age}}</td>
+                                        <td>{{student.city}}</td>
+                                        <td><button type="button" class="btn btn-primary btn-round waves-effect waves-light"> <a
+                                                        href="{%url 'update-student' student.id%}"
+                                                >Update</a></button></td>
+                                        <td><button type="button" class="btn btn-danger btn-round waves-effect waves-light"> <a
+                                                        href="{%url 'delete-student' student.id%}"
+                                                >Delete</a></button></td>
+                                    </tr>
+                                    {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hover table card end -->
+                </div>
+                <!-- Page-body end -->
+
+                <!-- Page-body start -->
+                <div class="page-body">
+                    <!-- Hover table card start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Student List Under 18</h5>
+                            <!--                            <span>use class <code>table-hover</code> inside table element</span>-->
+                            <div class="card-header-right">
+                                <ul class="list-unstyled card-option">
+                                    <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                                    <li><i class="fa fa-minus minimize-card"></i></li>
+                                    <li><i class="fa fa-refresh reload-card"></i></li>
+                                    <li><i class="fa fa-trash close-card"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-block table-border-style">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Student Code</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Age</th>
+                                        <th>City</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for student in students_under_18%}
+                                    <tr>
+                                        <th scope="row">{{student.id}}</th>
+                                        <td>{{student.student_code}}</td>
+                                        <td>{{student.name}}</td>
+                                        <td>{{student.email}}</td>
+                                        <td>{{student.age}}</td>
+                                        <td>{{student.city|capfirst}}</td>
+                                    </tr>
+                                    {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hover table card end -->
+                </div>
+                <!-- Page-body end -->
+
+                <!-- Page-body start -->
+                <div class="page-body">
+                    <!-- Hover table card start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Student List Not From Ahmedabad</h5>
+                            <!--                            <span>use class <code>table-hover</code> inside table element</span>-->
+                            <div class="card-header-right">
+                                <ul class="list-unstyled card-option">
+                                    <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                                    <li><i class="fa fa-minus minimize-card"></i></li>
+                                    <li><i class="fa fa-refresh reload-card"></i></li>
+                                    <li><i class="fa fa-trash close-card"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-block table-border-style">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Student Code</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Age</th>
+                                        <th>City</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for student in students_not_from_ahmedabad%}
+                                    <tr>
+                                        <th scope="row">{{student.id}}</th>
+                                        <td>{{student.student_code}}</td>
+                                        <td>{{student.name}}</td>
+                                        <td>{{student.email}}</td>
+                                        <td>{{student.age}}</td>
+                                        <td>{{student.city|capfirst}}</td>
+                                    </tr>
+                                    {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hover table card end -->
+                </div>
+                <!-- Page-body end -->
+
+                 <!-- Page-body start -->
+                <div class="page-body">
+                    <!-- Hover table card start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Student List Based On Highest Skills</h5>
+                            <!--                            <span>use class <code>table-hover</code> inside table element</span>-->
+                            <div class="card-header-right">
+                                <ul class="list-unstyled card-option">
+                                    <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                                    <li><i class="fa fa-minus minimize-card"></i></li>
+                                    <li><i class="fa fa-refresh reload-card"></i></li>
+                                    <li><i class="fa fa-trash close-card"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-block table-border-style">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Student Code</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Age</th>
+                                        <th>City</th>
+                                        <th>Number Of Skills</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%for student in student_highest_skill%}
+                                    <tr>
+                                        <th scope="row">{{student.id}}</th>
+                                        <td>{{student.student_code}}</td>
+                                        <td>{{student.name}}</td>
+                                        <td>{{student.email}}</td>
+                                        <td>{{student.age}}</td>
+                                        <td>{{student.city|capfirst}}</td>
+                                        <td>{{student.count_skill}}</td>
+                                    </tr>
+                                    {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hover table card end -->
+                </div>
+                <!-- Page-body end -->
+
+                <!-- Row start -->
+                <div class="row">
+                    <!-- Multiple Open Accordion start -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-header-text">
+                                    Student List Group By Class
+                                </h5>
+                            </div>
+                            <div class="card-block accordion-block">
+                                <div
+                                        id="accordion"
+                                        role="tablist"
+                                        aria-multiselectable="true"
+                                >
+                                    {%for class in student_class%}
+                                    <div class="accordion-panel">
+                                        <div
+                                                class="accordion-heading"
+                                                role="tab"
+                                                id="headingOne"
+                                        >
+                                            <h3 class="card-title accordion-title">
+                                                <a
+                                                        class="accordion-msg waves-effect waves-dark"
+                                                        data-toggle="collapse"
+                                                        data-parent="#accordion"
+                                                        href="#{{class.id}}"
+                                                        aria-expanded="true"
+                                                        aria-controls="{{class.id}}"
+                                                >
+                                                    {{class.name}}
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div
+                                                id="{{class.id}}"
+                                                class="panel-collapse collapse in"
+                                                role="tabpanel"
+                                                aria-labelledby="headingOne"
+                                        >
+                                            <div
+                                                    class="accordion-content accordion-desc"
+                                            >
+                                                <div class="card-block table-border-style">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Student Code</th>
+                                                                <th>Name</th>
+                                                                <th>Email</th>
+                                                                <th>Age</th>
+                                                                <th>City</th>
+                                                                <th></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {%for student in class.student_set.all|dictsort:"id"%}
+                                                            <tr>
+                                                                <th scope="row">{{student.id}}</th>
+                                                                <td>{{student.student_code}}</td>
+                                                                <td>{{student.name}}</td>
+                                                                <td>{{student.email}}</td>
+                                                                <td>{{student.age}}</td>
+                                                                <td>{{student.city|capfirst}}</td>
+                                                                <td><button type="button" class="btn btn-link btn-round waves-effect waves-light">Link</button></td>
+                                                            </tr>
+                                                            {%endfor%}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Multiple Open Accordion ends -->
+
+                </div>
+                <!-- Row end -->
+                <!-- Row start -->
+            </div>
+        </div>
+    </div>
+    <!-- Main-body end -->
+
+    <div id="styleSelector">
+
+    </div>
+</div>
+</div>
+
+{%endblock%}

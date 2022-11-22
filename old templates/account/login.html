@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+{%block content%}
+
+<div class="container login-container">
+    <div class="row">
+        <div class="login-form-1 w-50 dynamic-margin">
+            <h3>Login</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form|crispy}}
+                </fieldset>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Login"/>
+                </div>
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd">Forget Password?</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{%endblock%}
